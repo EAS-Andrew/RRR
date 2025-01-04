@@ -13,8 +13,8 @@ const config: Config = {
         display: ['var(--font-space-grotesk)', 'system-ui', 'sans-serif'],
       },
       animation: {
-        'fade-in': 'fade-in 1s ease-out',
-        'slide-up': 'slide-up 0.5s ease-out',
+        'fade-in': 'fade-in 0.8s ease-out forwards',
+        'slide-up': 'slide-up 0.5s ease-out forwards',
         'float': 'float 6s ease-in-out infinite',
       },
       keyframes: {
@@ -30,6 +30,9 @@ const config: Config = {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-10px)' },
         },
+      },
+      opacity: {
+        '0': '0',
       },
     },
   },

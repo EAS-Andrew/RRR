@@ -56,19 +56,19 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="min-h-screen flex flex-col justify-center items-center px-4 border-b border-gray-100 pt-16 bg-gradient-to-b from-white to-gray-50">
-        <div className="relative w-48 h-48 mb-8 animate-fade-in animate-float">
+        <div className="relative w-48 h-48 mb-8 opacity-0 animate-fade-in" style={{ animationDelay: '0.2s' }}>
           <Image
             src="/logo.png"
             alt="RRR Logo"
             fill
-            className="object-contain"
+            className="object-contain animate-float"
             priority
           />
         </div>
-        <p className="text-xl md:text-2xl text-gray-600 text-center max-w-2xl tracking-wide font-display animate-fade-in" style={{ animationDelay: '0.5s' }}>
+        <p className="text-xl md:text-2xl text-gray-600 text-center max-w-2xl tracking-wide font-display opacity-0 animate-fade-in" style={{ animationDelay: '0.5s' }}>
           Rapid, Reliable, Recovery – Anytime, Anywhere!
         </p>
-        <div className="mt-12 flex flex-col sm:flex-row gap-4 animate-fade-in" style={{ animationDelay: '0.75s' }}>
+        <div className="mt-12 flex flex-col sm:flex-row gap-4 opacity-0 animate-fade-in" style={{ animationDelay: '0.8s' }}>
           <a href="#contact" className="bg-black text-white px-8 py-4 text-lg font-display font-semibold hover:bg-gray-900 transition-colors rounded-md">
             Get Help Now
           </a>
