@@ -65,9 +65,11 @@ export default function Home() {
             priority
           />
         </div>
-        <p className="text-xl md:text-2xl text-gray-600 text-center max-w-2xl tracking-wide font-display opacity-0 animate-fade-in" style={{ animationDelay: '0.5s' }}>
-          Rapid, Reliable, Recovery – Anytime, Anywhere!
-        </p>
+        <div className="text-center opacity-0 animate-fade-in" style={{ animationDelay: '0.5s' }}>
+          <p className="text-3xl md:text-4xl font-display font-bold tracking-tight">
+            Reliable Roadside Recovery
+          </p>
+        </div>
         <div className="mt-12 flex flex-col sm:flex-row gap-4 opacity-0 animate-fade-in" style={{ animationDelay: '0.8s' }}>
           <a href="#contact" className="bg-black text-white px-8 py-4 text-lg font-display font-semibold hover:bg-gray-900 transition-colors rounded-md">
             Get Help Now
