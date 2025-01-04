@@ -2,100 +2,135 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+    <main className="min-h-screen bg-white text-black">
+      {/* Navigation */}
+      <nav className="fixed w-full bg-white/80 backdrop-blur-sm z-50 border-b border-gray-100">
+        <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+          <a href="#" className="relative w-12 h-12">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              src="/logo.png"
+              alt="RRR Logo"
+              fill
+              className="object-contain"
+              priority
             />
-            Deploy now
           </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          <div className="hidden md:flex gap-8">
+            <a href="#services" className="font-display hover:text-gray-600 transition-colors">Services</a>
+            <a href="#promise" className="font-display hover:text-gray-600 transition-colors">Our Promise</a>
+            <a href="#contact" className="font-display hover:text-gray-600 transition-colors">Contact</a>
+          </div>
+          <button className="bg-black text-white px-4 py-2 text-sm font-display font-semibold hover:bg-gray-900 transition-colors">
+            24/7 Emergency
+          </button>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+      </nav>
+
+      {/* Hero Section */}
+      <section className="min-h-screen flex flex-col justify-center items-center px-4 border-b border-gray-100 pt-16">
+        <div className="relative w-48 h-48 mb-8">
           <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+            src="/logo.png"
+            alt="RRR Logo"
+            fill
+            className="object-contain"
+            priority
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+        </div>
+        <p className="text-xl md:text-2xl text-gray-600 text-center max-w-2xl tracking-wide font-display">
+          Rapid, Reliable, Recovery – Anytime, Anywhere!
+        </p>
+      </section>
+
+      {/* Services Section */}
+      <section id="services" className="py-24 px-4 max-w-6xl mx-auto scroll-mt-16">
+        <h2 className="text-4xl font-bold mb-16 tracking-tight font-display">Services</h2>
+        <div className="grid md:grid-cols-2 gap-12">
+          <div className="group p-6 border border-gray-100 hover:border-gray-200 transition-colors">
+            <h3 className="text-2xl font-semibold mb-4 font-display">Vehicle Recovery</h3>
+            <ul className="space-y-2 text-gray-600">
+              <li>Emergency breakdown recovery</li>
+              <li>Accident recovery and transport</li>
+              <li>Off-road vehicle recovery</li>
+            </ul>
+          </div>
+          <div className="group p-6 border border-gray-100 hover:border-gray-200 transition-colors">
+            <h3 className="text-2xl font-semibold mb-4 font-display">Vehicle Moving Services</h3>
+            <ul className="space-y-2 text-gray-600">
+              <li>Single or multiple vehicle transportation</li>
+              <li>Long-distance vehicle moving</li>
+              <li>Dealership and fleet vehicle logistics</li>
+            </ul>
+          </div>
+          <div className="group p-6 border border-gray-100 hover:border-gray-200 transition-colors">
+            <h3 className="text-2xl font-semibold mb-4 font-display">Roadside Assistance</h3>
+            <ul className="space-y-2 text-gray-600">
+              <li>Battery jump-starts</li>
+              <li>Tire changes</li>
+              <li>Fuel delivery</li>
+            </ul>
+          </div>
+          <div className="group p-6 border border-gray-100 hover:border-gray-200 transition-colors">
+            <h3 className="text-2xl font-semibold mb-4 font-display">Specialty Vehicle Handling</h3>
+            <ul className="space-y-2 text-gray-600">
+              <li>Motorcycles, vans, and classic cars</li>
+              <li>Secure and insured transport</li>
+              <li>High-value vehicle specialists</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* Promise Section */}
+      <section id="promise" className="py-24 px-4 bg-black text-white scroll-mt-16">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold mb-16 tracking-tight font-display">Our Promise</h2>
+          <div className="grid md:grid-cols-2 gap-12">
+            <div className="p-6 border border-white/10 hover:border-white/20 transition-colors">
+              <h3 className="text-2xl font-semibold mb-4 font-display">Fast Response</h3>
+              <p className="text-gray-300">Available 24/7 for emergency assistance.</p>
+            </div>
+            <div className="p-6 border border-white/10 hover:border-white/20 transition-colors">
+              <h3 className="text-2xl font-semibold mb-4 font-display">Reliability</h3>
+              <p className="text-gray-300">Fully insured and equipped with the latest tools.</p>
+            </div>
+            <div className="p-6 border border-white/10 hover:border-white/20 transition-colors">
+              <h3 className="text-2xl font-semibold mb-4 font-display">Professionalism</h3>
+              <p className="text-gray-300">Trained and experienced drivers who treat every vehicle with care.</p>
+            </div>
+            <div className="p-6 border border-white/10 hover:border-white/20 transition-colors">
+              <h3 className="text-2xl font-semibold mb-4 font-display">Transparency</h3>
+              <p className="text-gray-300">Competitive pricing with no hidden fees.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-24 px-4 scroll-mt-16">
+        <div className="max-w-6xl mx-auto text-center">
+          <h2 className="text-4xl font-bold mb-8 tracking-tight font-display">Need Assistance?</h2>
+          <p className="text-xl text-gray-600 mb-8">
+            Whether you&apos;re stranded on the road or need professional vehicle logistics,
+            we&apos;re your trusted partner for dependable service.
+          </p>
+          <div className="flex flex-col md:flex-row gap-4 justify-center">
+            <button className="bg-black text-white px-8 py-4 text-lg font-display font-semibold hover:bg-gray-900 transition-colors">
+              Contact Us
+            </button>
+            <button className="border border-black px-8 py-4 text-lg font-display font-semibold hover:bg-black hover:text-white transition-colors">
+              Request Quote
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-8 px-4 border-t border-gray-100">
+        <div className="max-w-6xl mx-auto text-center text-gray-600">
+          <p>© {new Date().getFullYear()} RRR. All rights reserved.</p>
+        </div>
       </footer>
-    </div>
+    </main>
   );
 }
