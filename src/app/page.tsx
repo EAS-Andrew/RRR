@@ -56,28 +56,35 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="min-h-screen flex flex-col justify-center items-center px-4 border-b border-gray-100 pt-16 bg-gradient-to-b from-white to-gray-50">
-        <div className="relative w-48 h-48 mb-8 opacity-0 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-          <Image
-            src="/logo.png"
-            alt="RRR Logo"
-            fill
-            className="object-contain animate-float"
-            priority
-          />
-        </div>
-        <div className="text-center opacity-0 animate-fade-in" style={{ animationDelay: '0.5s' }}>
-          <p className="text-3xl md:text-4xl font-display font-bold tracking-tight">
-            Reliable Roadside Recovery
-          </p>
-        </div>
-        <div className="mt-12 flex flex-col sm:flex-row gap-4 opacity-0 animate-fade-in" style={{ animationDelay: '0.8s' }}>
-          <a href="#contact" className="bg-black text-white px-8 py-4 text-lg font-display font-semibold hover:bg-gray-900 transition-colors rounded-md">
-            Get Help Now
-          </a>
-          <a href="#services" className="border border-black px-8 py-4 text-lg font-display font-semibold hover:bg-black hover:text-white transition-colors rounded-md">
-            Our Services
-          </a>
+      <section className="min-h-[90vh] md:min-h-screen flex flex-col justify-center items-center px-4 border-b border-gray-100 pt-24 md:pt-16 bg-gradient-to-b from-white to-gray-50">
+        <div className="w-full max-w-6xl mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-8 lg:gap-16">
+          <div className="flex-1 text-center lg:text-left opacity-0 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight mb-4 md:mb-6">
+              Reliable Roadside Recovery
+            </h1>
+            <p className="text-base md:text-lg text-gray-600 mb-6 md:mb-8 max-w-xl mx-auto lg:mx-0">
+              Professional vehicle recovery and transportation services available 24/7. Your trusted partner on the road.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+              <a href="#contact" className="bg-black text-white px-6 py-3 md:px-8 md:py-4 text-base md:text-lg font-display font-semibold hover:bg-gray-900 transition-colors rounded-md">
+                Get Help Now
+              </a>
+              <a href="#services" className="border border-black px-6 py-3 md:px-8 md:py-4 text-base md:text-lg font-display font-semibold hover:bg-black hover:text-white transition-colors rounded-md">
+                Our Services
+              </a>
+            </div>
+          </div>
+          <div className="w-full lg:w-[45%] relative h-52 sm:h-72 md:h-96 opacity-0 animate-fade-in" style={{ animationDelay: '0.5s' }}>
+            <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-transparent z-10 pointer-events-none" />
+            <Image
+              src="/van.png"
+              alt="RRR Recovery Van"
+              fill
+              className="object-contain object-center"
+              priority
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 45vw, 600px"
+            />
+          </div>
         </div>
       </section>
 
@@ -296,8 +303,8 @@ export default function Home() {
               <h4 className="font-display font-semibold mb-4">Contact</h4>
               <ul className="space-y-2 text-gray-600">
                 <li>24/7 Emergency: (123) 456-7890</li>
-                <li>Email: info@rrr.com</li>
-                <li>Location: Your City, State</li>
+                <li>Email: info@rrrecovery.co.uk</li>
+                <li>Location: Uskvale</li>
               </ul>
             </div>
           </div>
