@@ -15,11 +15,58 @@ export default function QuotePage() {
         date: "",
         additionalInfo: "",
     });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState<{ type: 'success' | 'error' | null; message: string }>({
+        type: null,
+        message: ''
+    });
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        // Handle form submission
-        console.log(formData);
+        setIsSubmitting(true);
+        setSubmitStatus({ type: null, message: '' });
+
+        try {
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                },
+                body: JSON.stringify({
+                    access_key: "YOUR_ACCESS_KEY_HERE", // Replace with your actual access key
+                    ...formData,
+                    subject: "New Quote Request from RRR Website",
+                }),
+            });
+
+            const result = await response.json();
+            if (result.success) {
+                setSubmitStatus({
+                    type: 'success',
+                    message: 'Thank you! Your quote request has been submitted successfully.'
+                });
+                setFormData({
+                    name: "",
+                    email: "",
+                    phone: "",
+                    vehicleType: "",
+                    pickupLocation: "",
+                    dropoffLocation: "",
+                    date: "",
+                    additionalInfo: "",
+                });
+            } else {
+                throw new Error('Submission failed');
+            }
+        } catch (error) {
+            setSubmitStatus({
+                type: 'error',
+                message: 'Sorry, there was an error submitting your request. Please try again or contact us directly.'
+            });
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -61,6 +108,13 @@ export default function QuotePage() {
                             Fill out the form below and we&apos;ll get back to you with a detailed quote for our services.
                         </p>
                     </div>
+
+                    {submitStatus.type && (
+                        <div className={`mb-8 p-4 rounded-md ${submitStatus.type === 'success' ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'
+                            }`}>
+                            <p className="text-center font-display">{submitStatus.message}</p>
+                        </div>
+                    )}
 
                     <form onSubmit={handleSubmit} className="space-y-8 opacity-0 animate-fade-in" style={{ animationDelay: '0.2s' }}>
                         <div className="grid md:grid-cols-2 gap-8">
@@ -175,12 +229,26 @@ export default function QuotePage() {
                         <div className="flex justify-center pt-8">
                             <button
                                 type="submit"
-                                className="bg-black text-white px-8 py-4 text-lg font-display font-semibold hover:bg-gray-900 transition-colors rounded-md inline-flex items-center gap-2"
+                                disabled={isSubmitting}
+                                className={`bg-black text-white px-8 py-4 text-lg font-display font-semibold hover:bg-gray-900 transition-colors rounded-md inline-flex items-center gap-2 ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+                                    }`}
                             >
-                                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                </svg>
-                                Submit Quote Request
+                                {isSubmitting ? (
+                                    <>
+                                        <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                        </svg>
+                                        Submitting...
+                                    </>
+                                ) : (
+                                    <>
+                                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                        </svg>
+                                        Submit Quote Request
+                                    </>
+                                )}
                             </button>
                         </div>
                     </form>
