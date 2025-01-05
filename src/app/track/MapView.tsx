@@ -11,7 +11,6 @@ interface MapViewProps {
 
 export default function MapView({ customerLocation, vehicleLocation, isEnRoute }: MapViewProps) {
   const mapRef = useRef<HTMLDivElement>(null);
-  const [map, setMap] = useState<google.maps.Map | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -118,8 +117,6 @@ export default function MapView({ customerLocation, vehicleLocation, isEnRoute }
             }
           ]
         });
-
-        setMap(mapInstance);
 
         // Geocode customer location
         geocoder.geocode(
