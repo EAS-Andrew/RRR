@@ -59,7 +59,7 @@ export default function QuotePage() {
             } else {
                 throw new Error('Submission failed');
             }
-        } catch (error) {
+        } catch {
             setSubmitStatus({
                 type: 'error',
                 message: 'Sorry, there was an error submitting your request. Please try again or contact us directly.'
