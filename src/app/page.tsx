@@ -6,11 +6,16 @@ import Link from "next/link";
 
 export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
+
+  const toggleFaq = (index: number) => {
+    setExpandedFaq(expandedFaq === index ? null : index);
+  };
 
   return (
     <main className="min-h-screen bg-white text-black">
       {/* Navigation */}
-      <nav className="fixed w-full bg-white/80 backdrop-blur-sm z-50 border-b border-gray-100">
+      <nav className="fixed w-full bg-white z-50 border-b border-gray-100">
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
           <a href="#" className="relative w-12 h-12">
             <Image
@@ -27,9 +32,9 @@ export default function Home() {
             <a href="#contact" className="font-display hover:text-gray-600 transition-colors">Contact</a>
           </div>
           <div className="flex items-center gap-4">
-            <button className="bg-black text-white px-4 py-2 text-sm font-display font-semibold hover:bg-gray-900 transition-colors">
+            <a href="tel:+1234567890" className="bg-black text-white px-4 py-2 text-sm font-display font-semibold hover:bg-gray-900 transition-colors">
               24/7 Emergency
-            </button>
+            </a>
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="md:hidden p-2 hover:bg-gray-100 rounded-md transition-colors"
@@ -46,7 +51,7 @@ export default function Home() {
         </div>
 
         {/* Mobile Menu */}
-        <div className={`md:hidden ${isMobileMenuOpen ? 'block' : 'hidden'} border-t border-gray-100 bg-white/80 backdrop-blur-sm`}>
+        <div className={`md:hidden ${isMobileMenuOpen ? 'block' : 'hidden'} border-t border-gray-100 bg-white`}>
           <div className="px-4 py-2 space-y-1">
             <a href="#services" className="block py-2 px-4 font-display hover:bg-gray-100 rounded-md transition-colors">Services</a>
             <a href="#promise" className="block py-2 px-4 font-display hover:bg-gray-100 rounded-md transition-colors">Our Promise</a>
@@ -89,7 +94,7 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-24 px-4 max-w-6xl mx-auto scroll-mt-16">
+      <section id="services" className="py-24 px-4 max-w-6xl mx-auto scroll-mt-16 bg-white">
         <h2 className="text-4xl font-bold mb-16 tracking-tight font-display text-center">Our Services</h2>
         <div className="grid md:grid-cols-2 gap-12">
           <div className="group p-6 border border-gray-100 hover:border-gray-200 transition-colors rounded-lg hover:shadow-lg">
@@ -240,8 +245,67 @@ export default function Home() {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <section className="py-24 px-4 bg-white scroll-mt-16">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-4xl font-bold mb-16 tracking-tight font-display text-center">Frequently Asked Questions</h2>
+          <div className="space-y-3">
+            {[
+              {
+                question: "How quickly can you respond to an emergency?",
+                answer: "We aim to reach you within 30-60 minutes in emergency situations, depending on your location and traffic conditions. Our 24/7 service ensures we're always ready to help."
+              },
+              {
+                question: "What areas do you cover?",
+                answer: "We provide comprehensive coverage across Uskvale and surrounding areas. For specific location queries, please contact our team."
+              },
+              {
+                question: "Are you fully insured?",
+                answer: "Yes, we are fully insured for vehicle recovery and transportation. Our comprehensive insurance coverage protects your vehicle during the entire recovery and transportation process."
+              },
+              {
+                question: "What payment methods do you accept?",
+                answer: "We accept all major credit/debit cards, cash, and bank transfers. For corporate clients, we can arrange account-based billing."
+              },
+              {
+                question: "Do you handle specialist vehicles?",
+                answer: "Yes, we have experience with a wide range of vehicles including classic cars, motorcycles, and high-performance vehicles. Our team is trained to handle specialist vehicles with extra care."
+              },
+              {
+                question: "What should I do while waiting for recovery?",
+                answer: "Ensure you're in a safe position, ideally away from moving traffic. Turn on your hazard lights and place a warning triangle if available. Our team will guide you through any specific safety measures when you call."
+              }
+            ].map((faq, index) => (
+              <div key={index} className="border border-gray-100 rounded-lg overflow-hidden">
+                <button
+                  onClick={() => toggleFaq(index)}
+                  className="w-full p-4 text-left bg-gray-50 hover:bg-gray-100 transition-colors flex items-center justify-between"
+                >
+                  <h3 className="text-lg font-semibold font-display">{faq.question}</h3>
+                  <svg
+                    className={`w-5 h-5 transform transition-transform ${expandedFaq === index ? 'rotate-180' : ''}`}
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div
+                  className={`overflow-hidden transition-all duration-200 ${
+                    expandedFaq === index ? 'max-h-48' : 'max-h-0'
+                  }`}
+                >
+                  <p className="p-4 text-gray-600 bg-white">{faq.answer}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Contact Section */}
-      <section id="contact" className="py-24 px-4 scroll-mt-16 bg-gradient-to-b from-gray-50 to-white">
+      <section id="contact" className="py-24 px-4 scroll-mt-16 bg-gray-50">
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-4xl font-bold mb-8 tracking-tight font-display">Need Assistance?</h2>
           <p className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
