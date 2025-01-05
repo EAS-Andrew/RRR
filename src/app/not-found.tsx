@@ -33,7 +33,7 @@ export default function NotFound() {
           <h1 className="text-8xl font-bold mb-4 tracking-tight font-display">404</h1>
           <h2 className="text-2xl font-bold mb-8 tracking-tight font-display">Page Not Found</h2>
           <p className="text-gray-600 mb-12">
-            The page you're looking for doesn't exist or has been moved.
+            The page you&apos;re looking for doesn&apos;t exist or has been moved.
           </p>
           <Link
             href="/"
@@ -52,7 +52,7 @@ export default function NotFound() {
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-2xl font-bold mb-4 tracking-tight font-display">Need Help?</h2>
           <p className="text-gray-300 mb-8">
-            If you need immediate assistance, we're here to help.
+            If you need immediate assistance, we&apos;re here to help.
           </p>
           <a
             href="tel:+1234567890"
