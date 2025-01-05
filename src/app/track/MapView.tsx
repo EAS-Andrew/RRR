@@ -207,7 +207,7 @@ export default function MapView({ customerLocation, vehicleLocation, isEnRoute }
           }
         );
 
-      } catch (err) {
+      } catch {
         setError('Failed to load map. Please try again later.');
       }
     };
