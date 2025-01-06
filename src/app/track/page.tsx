@@ -105,7 +105,7 @@ function TrackingContent() {
   const fetchTrackingData = (code: string) => {
     setIsLoading(true);
     setError(null);
-    
+
     // Simulate API call
     setTimeout(() => {
       const data = mockTrackingData[code.toUpperCase()];
@@ -123,24 +123,9 @@ function TrackingContent() {
   const handleTrack = (e: React.FormEvent) => {
     e.preventDefault();
     const code = trackingId.trim().toUpperCase();
-    
+
     // Update URL with tracking code
     router.push(`/track?code=${code}`);
-  };
-
-  const getStatusColor = (status: TrackingStatus['status']) => {
-    switch (status) {
-      case 'assigned':
-        return 'bg-yellow-50 text-yellow-700';
-      case 'en_route':
-        return 'bg-blue-50 text-blue-700';
-      case 'arrived':
-        return 'bg-green-50 text-green-700';
-      case 'completed':
-        return 'bg-gray-50 text-gray-700';
-      default:
-        return 'bg-gray-50 text-gray-700';
-    }
   };
 
   return (
@@ -148,7 +133,7 @@ function TrackingContent() {
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold mb-4 tracking-tight font-display">Track Your Recovery</h1>
-          <p className="text-gray-600">
+          <p className="text-gray-400">
             Enter your tracking ID to see the status and location of your recovery vehicle.
           </p>
         </div>
@@ -160,15 +145,14 @@ function TrackingContent() {
               value={trackingId}
               onChange={(e) => setTrackingId(e.target.value)}
               placeholder="Enter tracking ID (try RRR123)"
-              className="flex-1 px-4 py-3 rounded-md border border-gray-200 focus:border-black focus:ring-1 focus:ring-black transition-colors"
+              className="flex-1 px-4 py-3 rounded-md border border-gray-800 bg-gray-900 text-gray-100 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-colors placeholder-gray-500"
               required
             />
             <button
               type="submit"
               disabled={isLoading}
-              className={`w-full sm:w-auto bg-black text-white px-8 py-3 rounded-md font-display font-semibold hover:bg-gray-900 transition-colors flex items-center justify-center gap-2 ${
-                isLoading ? 'opacity-50 cursor-not-allowed' : ''
-              }`}
+              className={`w-full sm:w-auto bg-purple-600 text-white px-8 py-3 rounded-md font-display font-semibold hover:bg-purple-700 transition-colors flex items-center justify-center gap-2 ${isLoading ? 'opacity-50 cursor-not-allowed' : ''
+                }`}
             >
               {isLoading ? (
                 <>
@@ -184,7 +168,7 @@ function TrackingContent() {
             </button>
           </div>
           {error && (
-            <p className="mt-2 text-red-600 text-sm">{error}</p>
+            <p className="mt-2 text-red-400 text-sm">{error}</p>
           )}
         </form>
 
@@ -194,129 +178,110 @@ function TrackingContent() {
               {/* Left Column - Status and Details */}
               <div className="lg:col-span-2 space-y-6">
                 {/* Timeline */}
-                <div className="bg-white border border-gray-100 rounded-lg p-6 shadow-sm">
+                <div className="bg-gray-900 border border-gray-800 rounded-lg p-6">
                   <div className="flex justify-between items-center mb-8">
                     <h2 className="text-2xl font-semibold font-display">Recovery Progress</h2>
-                    <span className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(trackingData.status)}`}>
-                      {trackingData.status.replace('_', ' ').toUpperCase()}
-                    </span>
+
                   </div>
                   <div className="relative">
-                    <div className="absolute left-[17px] top-0 h-[calc(100%-2.25rem)] w-0.5 bg-gray-200"></div>
+                    <div className="absolute left-[17px] top-0 h-[calc(100%-2.25rem)] w-0.5 bg-gray-800"></div>
                     <div className="space-y-8 relative">
                       <div className="flex gap-4">
                         <div className={`w-9 h-9 rounded-full border-2 flex items-center justify-center shrink-0 
-                          ${trackingData.status !== 'assigned' ? 'border-green-500 bg-green-50' : 'border-gray-300 bg-white'}`}>
+                          ${trackingData.status !== 'assigned' ? 'border-purple-500 bg-purple-900/50' : 'border-gray-700 bg-gray-900'}`}>
                           {trackingData.status !== 'assigned' ? (
-                            <svg className="w-5 h-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg className="w-5 h-5 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
                           ) : (
-                            <div className="w-3 h-3 bg-gray-300 rounded-full"></div>
+                            <div className="w-3 h-3 bg-gray-700 rounded-full"></div>
                           )}
                         </div>
                         <div>
                           <h3 className="font-semibold font-display">Recovery Assigned</h3>
-                          <p className="text-sm text-gray-600">Recovery vehicle assigned and preparing for departure</p>
+                          <p className="text-sm text-gray-400">Recovery vehicle assigned and preparing for departure</p>
                           <p className="text-sm text-gray-500 mt-1">Started at {trackingData.startTime}</p>
                         </div>
                       </div>
                       <div className="flex gap-4">
                         <div className={`w-9 h-9 rounded-full border-2 flex items-center justify-center shrink-0 
-                          ${trackingData.status === 'en_route' ? 'border-blue-500 bg-blue-50' : 
-                            trackingData.status === 'arrived' || trackingData.status === 'completed' ? 'border-green-500 bg-green-50' : 
-                            'border-gray-300 bg-white'}`}>
+                          ${trackingData.status === 'en_route' ? 'border-purple-500 bg-purple-900/50' :
+                            trackingData.status === 'arrived' || trackingData.status === 'completed' ? 'border-purple-500 bg-purple-900/50' :
+                              'border-gray-700 bg-gray-900'}`}>
                           {trackingData.status === 'en_route' ? (
-                            <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                            <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
                           ) : trackingData.status === 'arrived' || trackingData.status === 'completed' ? (
-                            <svg className="w-5 h-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg className="w-5 h-5 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
                           ) : (
-                            <div className="w-3 h-3 bg-gray-300 rounded-full"></div>
+                            <div className="w-3 h-3 bg-gray-700 rounded-full"></div>
                           )}
                         </div>
                         <div>
                           <h3 className="font-semibold font-display">En Route</h3>
-                          <p className="text-sm text-gray-600">Recovery vehicle is on the way to your location</p>
+                          <p className="text-sm text-gray-400">Recovery vehicle is on the way to your location</p>
                           <p className="text-sm text-gray-500 mt-1">ETA: {trackingData.estimatedArrival}</p>
                         </div>
                       </div>
                       <div className="flex gap-4">
                         <div className={`w-9 h-9 rounded-full border-2 flex items-center justify-center shrink-0 
-                          ${trackingData.status === 'arrived' ? 'border-green-500 bg-green-50' : 'border-gray-300 bg-white'}`}>
+                          ${trackingData.status === 'arrived' ? 'border-purple-500 bg-purple-900/50' : 'border-gray-700 bg-gray-900'}`}>
                           {trackingData.status === 'arrived' ? (
-                            <svg className="w-5 h-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg className="w-5 h-5 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
                           ) : (
-                            <div className="w-3 h-3 bg-gray-300 rounded-full"></div>
+                            <div className="w-3 h-3 bg-gray-700 rounded-full"></div>
                           )}
                         </div>
                         <div>
                           <h3 className="font-semibold font-display">Arrived</h3>
-                          <p className="text-sm text-gray-600">Recovery vehicle has arrived at your location</p>
+                          <p className="text-sm text-gray-400">Recovery vehicle has arrived at your location</p>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Details Card */}
-                <div className="bg-white border border-gray-100 rounded-lg p-6 shadow-sm">
-                  <h2 className="text-2xl font-semibold font-display mb-6">Recovery Details</h2>
-                  <div className="space-y-4">
+                {/* Driver and Vehicle Details */}
+                <div className="bg-gray-900 border border-gray-800 rounded-lg p-6 mt-6">
+                  <h3 className="text-lg font-semibold font-display mb-4">Recovery Details</h3>
+                  <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <h3 className="text-sm font-semibold text-gray-500 mb-1">Recovery Vehicle</h3>
-                      <div className="flex items-center gap-2">
-                        <svg className="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
-                        </svg>
-                        <span>{trackingData.vehicleType}</span>
-                      </div>
+                      <p className="text-sm text-gray-400">Driver Name</p>
+                      <p className="font-medium">{trackingData.driverName}</p>
                     </div>
                     <div>
-                      <h3 className="text-sm font-semibold text-gray-500 mb-1">Driver</h3>
-                      <div className="flex items-center gap-2">
-                        <svg className="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                        </svg>
-                        <span>{trackingData.driverName}</span>
-                      </div>
+                      <p className="text-sm text-gray-400">Vehicle Type</p>
+                      <p className="font-medium">{trackingData.vehicleType}</p>
                     </div>
                     <div>
-                      <h3 className="text-sm font-semibold text-gray-500 mb-1">Your Location</h3>
-                      <div className="flex items-center gap-2">
-                        <svg className="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                        </svg>
-                        <span>{trackingData.customerLocation}</span>
-                      </div>
+                      <p className="text-sm text-gray-400">Current Location</p>
+                      <p className="font-medium">{trackingData.currentLocation}</p>
                     </div>
                     <div>
-                      <h3 className="text-sm font-semibold text-gray-500 mb-1">Last Updated</h3>
-                      <div className="flex items-center gap-2">
-                        <svg className="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <span>{trackingData.lastUpdated}</span>
-                      </div>
+                      <p className="text-sm text-gray-400">Last Updated</p>
+                      <p className="font-medium">{trackingData.lastUpdated}</p>
                     </div>
                   </div>
                 </div>
               </div>
 
               {/* Right Column - Map */}
-              <div className="lg:col-span-3 sticky top-24">
-                <div className="bg-white border border-gray-100 rounded-lg p-6 shadow-sm h-full">
-                  <h2 className="text-2xl font-semibold font-display mb-6">Live Location</h2>
-                  <div className="h-[600px]">
-                    <MapView 
+              <div className="lg:col-span-3">
+                <div className="bg-gray-900 border border-gray-800 rounded-lg p-6 h-[500px]">
+                  <Suspense fallback={
+                    <div className="w-full h-full flex items-center justify-center">
+                      <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-purple-500"></div>
+                    </div>
+                  }>
+                    <MapView
                       customerLocation={trackingData.customerLocation}
                       vehicleLocation={trackingData.currentLocation}
                       isEnRoute={trackingData.status === 'en_route'}
                     />
-                  </div>
+                  </Suspense>
                 </div>
               </div>
             </div>
@@ -329,9 +294,9 @@ function TrackingContent() {
 
 export default function TrackPage() {
   return (
-    <main className="min-h-screen bg-white text-black">
+    <main className="min-h-screen bg-gray-950 text-gray-100">
       {/* Navigation */}
-      <nav className="fixed w-full bg-white z-50 border-b border-gray-100">
+      <nav className="fixed w-full bg-gray-950/80 backdrop-blur-lg z-50 border-b border-gray-800">
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
           <Link href="/" className="relative w-12 h-12">
             <Image
@@ -344,7 +309,7 @@ export default function TrackPage() {
           </Link>
           <Link
             href="/"
-            className="font-display hover:text-gray-600 transition-colors"
+            className="font-display hover:text-purple-400 transition-colors"
           >
             Back to Home
           </Link>
@@ -362,15 +327,15 @@ export default function TrackPage() {
       </Suspense>
 
       {/* Contact Info */}
-      <section className="py-16 px-4 bg-black text-white">
+      <section className="py-16 px-4 bg-purple-600 text-white">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-2xl font-bold mb-4 tracking-tight font-display">Need Help?</h2>
-          <p className="text-gray-300 mb-8">
-            If you need immediate assistance or have any questions about your recovery.
+          <h2 className="text-2xl font-bold mb-4 tracking-tight font-display">Need Immediate Assistance?</h2>
+          <p className="text-gray-100 mb-8">
+            Our team is available 24/7 for emergency recovery services.
           </p>
           <a
             href="tel:+1234567890"
-            className="inline-flex items-center gap-2 bg-white text-black px-8 py-4 rounded-md font-display font-semibold hover:bg-gray-100 transition-colors"
+            className="inline-flex items-center gap-2 bg-white text-purple-600 px-8 py-4 rounded-md font-display font-semibold hover:bg-gray-100 transition-colors"
           >
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />

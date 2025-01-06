@@ -77,9 +77,9 @@ export default function QuotePage() {
     };
 
     return (
-        <main className="min-h-screen bg-white text-black">
+        <main className="min-h-screen bg-gray-950 text-gray-100">
             {/* Navigation */}
-            <nav className="fixed w-full bg-white/80 backdrop-blur-sm z-50 border-b border-gray-100">
+            <nav className="fixed w-full bg-gray-950/80 backdrop-blur-lg z-50 border-b border-gray-800">
                 <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
                     <Link href="/" className="relative w-12 h-12">
                         <Image
@@ -92,7 +92,7 @@ export default function QuotePage() {
                     </Link>
                     <Link
                         href="/"
-                        className="font-display hover:text-gray-600 transition-colors"
+                        className="font-display hover:text-purple-400 transition-colors"
                     >
                         Back to Home
                     </Link>
@@ -104,13 +104,13 @@ export default function QuotePage() {
                 <div className="max-w-3xl mx-auto">
                     <div className="text-center mb-12 opacity-0 animate-fade-in">
                         <h1 className="text-4xl font-bold mb-4 tracking-tight font-display">Request a Quote</h1>
-                        <p className="text-gray-600">
+                        <p className="text-gray-400">
                             Fill out the form below and we&apos;ll get back to you with a detailed quote for our services.
                         </p>
                     </div>
 
                     {submitStatus.type && (
-                        <div className={`mb-8 p-4 rounded-md ${submitStatus.type === 'success' ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'
+                        <div className={`mb-8 p-4 rounded-md ${submitStatus.type === 'success' ? 'bg-green-900/50 text-green-300 border border-green-700' : 'bg-red-900/50 text-red-300 border border-red-700'
                             }`}>
                             <p className="text-center font-display">{submitStatus.message}</p>
                         </div>
@@ -127,7 +127,7 @@ export default function QuotePage() {
                                         name="name"
                                         value={formData.name}
                                         onChange={handleChange}
-                                        className="w-full px-4 py-3 rounded-md border border-gray-200 focus:border-black focus:ring-1 focus:ring-black transition-colors"
+                                        className="w-full px-4 py-3 rounded-md border border-gray-800 bg-gray-900 text-gray-100 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-colors"
                                         required
                                     />
                                 </div>
@@ -139,7 +139,7 @@ export default function QuotePage() {
                                         name="email"
                                         value={formData.email}
                                         onChange={handleChange}
-                                        className="w-full px-4 py-3 rounded-md border border-gray-200 focus:border-black focus:ring-1 focus:ring-black transition-colors"
+                                        className="w-full px-4 py-3 rounded-md border border-gray-800 bg-gray-900 text-gray-100 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-colors"
                                         required
                                     />
                                 </div>
@@ -151,7 +151,7 @@ export default function QuotePage() {
                                         name="phone"
                                         value={formData.phone}
                                         onChange={handleChange}
-                                        className="w-full px-4 py-3 rounded-md border border-gray-200 focus:border-black focus:ring-1 focus:ring-black transition-colors"
+                                        className="w-full px-4 py-3 rounded-md border border-gray-800 bg-gray-900 text-gray-100 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-colors"
                                         required
                                     />
                                 </div>
@@ -162,7 +162,7 @@ export default function QuotePage() {
                                         name="vehicleType"
                                         value={formData.vehicleType}
                                         onChange={handleChange}
-                                        className="w-full px-4 py-3 rounded-md border border-gray-200 focus:border-black focus:ring-1 focus:ring-black transition-colors"
+                                        className="w-full px-4 py-3 rounded-md border border-gray-800 bg-gray-900 text-gray-100 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-colors"
                                         required
                                     >
                                         <option value="">Select vehicle type</option>
@@ -184,7 +184,7 @@ export default function QuotePage() {
                                         name="pickupLocation"
                                         value={formData.pickupLocation}
                                         onChange={handleChange}
-                                        className="w-full px-4 py-3 rounded-md border border-gray-200 focus:border-black focus:ring-1 focus:ring-black transition-colors"
+                                        className="w-full px-4 py-3 rounded-md border border-gray-800 bg-gray-900 text-gray-100 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-colors"
                                         required
                                     />
                                 </div>
@@ -196,7 +196,7 @@ export default function QuotePage() {
                                         name="dropoffLocation"
                                         value={formData.dropoffLocation}
                                         onChange={handleChange}
-                                        className="w-full px-4 py-3 rounded-md border border-gray-200 focus:border-black focus:ring-1 focus:ring-black transition-colors"
+                                        className="w-full px-4 py-3 rounded-md border border-gray-800 bg-gray-900 text-gray-100 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-colors"
                                         required
                                     />
                                 </div>
@@ -208,7 +208,7 @@ export default function QuotePage() {
                                         name="date"
                                         value={formData.date}
                                         onChange={handleChange}
-                                        className="w-full px-4 py-3 rounded-md border border-gray-200 focus:border-black focus:ring-1 focus:ring-black transition-colors"
+                                        className="w-full px-4 py-3 rounded-md border border-gray-800 bg-gray-900 text-gray-100 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-colors"
                                         required
                                     />
                                 </div>
@@ -220,7 +220,7 @@ export default function QuotePage() {
                                         value={formData.additionalInfo}
                                         onChange={handleChange}
                                         rows={4}
-                                        className="w-full px-4 py-3 rounded-md border border-gray-200 focus:border-black focus:ring-1 focus:ring-black transition-colors resize-none"
+                                        className="w-full px-4 py-3 rounded-md border border-gray-800 bg-gray-900 text-gray-100 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-colors resize-none"
                                     ></textarea>
                                 </div>
                             </div>
@@ -230,7 +230,7 @@ export default function QuotePage() {
                             <button
                                 type="submit"
                                 disabled={isSubmitting}
-                                className={`bg-black text-white px-8 py-4 text-lg font-display font-semibold hover:bg-gray-900 transition-colors rounded-md inline-flex items-center gap-2 ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+                                className={`bg-purple-600 text-white px-8 py-4 text-lg font-display font-semibold hover:bg-purple-700 transition-colors rounded-md inline-flex items-center gap-2 ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
                                     }`}
                             >
                                 {isSubmitting ? (
@@ -256,15 +256,15 @@ export default function QuotePage() {
             </section>
 
             {/* Contact Info */}
-            <section className="py-16 px-4 bg-black text-white">
+            <section className="py-16 px-4 bg-purple-600 text-white">
                 <div className="max-w-3xl mx-auto text-center">
                     <h2 className="text-2xl font-bold mb-4 tracking-tight font-display">Need Immediate Assistance?</h2>
-                    <p className="text-gray-300 mb-8">
+                    <p className="text-gray-100 mb-8">
                         Our team is available 24/7 for emergency recovery services.
                     </p>
                     <a
                         href="tel:+1234567890"
-                        className="inline-flex items-center gap-2 bg-white text-black px-8 py-4 rounded-md font-display font-semibold hover:bg-gray-100 transition-colors"
+                        className="inline-flex items-center gap-2 bg-white text-purple-600 px-8 py-4 rounded-md font-display font-semibold hover:bg-gray-100 transition-colors"
                     >
                         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
