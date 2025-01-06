@@ -12,6 +12,21 @@ const config: Config = {
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
         display: ['var(--font-space-grotesk)', 'system-ui', 'sans-serif'],
       },
+      colors: {
+        primary: {
+          50: '#f6f4ff',
+          100: '#edebfe',
+          200: '#dcd7fe',
+          300: '#cabffd',
+          400: '#ac94fa',
+          500: '#9061f9',
+          600: '#7c3aed',
+          700: '#6d28d9',
+          800: '#5b21b6',
+          900: '#4c1d95',
+          950: '#2e1065',
+        },
+      },
       animation: {
         'fade-in': 'fade-in 0.8s ease-out forwards',
         'slide-up': 'slide-up 0.5s ease-out forwards',
@@ -30,9 +45,6 @@ const config: Config = {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-10px)' },
         },
-      },
-      opacity: {
-        '0': '0',
       },
     },
   },
