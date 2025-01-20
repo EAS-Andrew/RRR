@@ -105,7 +105,7 @@ function TrackingContent() {
   const fetchTrackingData = (code: string) => {
     setIsLoading(true);
     setError(null);
-    
+
     // Simulate API call
     setTimeout(() => {
       const data = mockTrackingData[code.toUpperCase()];
@@ -123,7 +123,7 @@ function TrackingContent() {
   const handleTrack = (e: React.FormEvent) => {
     e.preventDefault();
     const code = trackingId.trim().toUpperCase();
-    
+
     // Update URL with tracking code
     router.push(`/track?code=${code}`);
   };
@@ -166,9 +166,8 @@ function TrackingContent() {
             <button
               type="submit"
               disabled={isLoading}
-              className={`w-full sm:w-auto bg-black text-white px-8 py-3 rounded-md font-display font-semibold hover:bg-gray-900 transition-colors flex items-center justify-center gap-2 ${
-                isLoading ? 'opacity-50 cursor-not-allowed' : ''
-              }`}
+              className={`w-full sm:w-auto bg-black text-white px-8 py-3 rounded-md font-display font-semibold hover:bg-gray-900 transition-colors flex items-center justify-center gap-2 ${isLoading ? 'opacity-50 cursor-not-allowed' : ''
+                }`}
             >
               {isLoading ? (
                 <>
@@ -223,9 +222,9 @@ function TrackingContent() {
                       </div>
                       <div className="flex gap-4">
                         <div className={`w-9 h-9 rounded-full border-2 flex items-center justify-center shrink-0 
-                          ${trackingData.status === 'en_route' ? 'border-blue-500 bg-blue-50' : 
-                            trackingData.status === 'arrived' || trackingData.status === 'completed' ? 'border-green-500 bg-green-50' : 
-                            'border-gray-300 bg-white'}`}>
+                          ${trackingData.status === 'en_route' ? 'border-blue-500 bg-blue-50' :
+                            trackingData.status === 'arrived' || trackingData.status === 'completed' ? 'border-green-500 bg-green-50' :
+                              'border-gray-300 bg-white'}`}>
                           {trackingData.status === 'en_route' ? (
                             <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
                           ) : trackingData.status === 'arrived' || trackingData.status === 'completed' ? (
@@ -311,7 +310,7 @@ function TrackingContent() {
                 <div className="bg-white border border-gray-100 rounded-lg p-6 shadow-sm h-full">
                   <h2 className="text-2xl font-semibold font-display mb-6">Live Location</h2>
                   <div className="h-[600px]">
-                    <MapView 
+                    <MapView
                       customerLocation={trackingData.customerLocation}
                       vehicleLocation={trackingData.currentLocation}
                       isEnRoute={trackingData.status === 'en_route'}
@@ -369,13 +368,13 @@ export default function TrackPage() {
             If you need immediate assistance or have any questions about your recovery.
           </p>
           <a
-            href="tel:+1234567890"
+            href="tel:07512640063"
             className="inline-flex items-center gap-2 bg-white text-black px-8 py-4 rounded-md font-display font-semibold hover:bg-gray-100 transition-colors"
           >
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
             </svg>
-            Call (123) 456-7890
+            Call 07512640063
           </a>
         </div>
       </section>

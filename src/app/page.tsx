@@ -7,6 +7,7 @@ import Link from "next/link";
 export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
+  const [isTrackingBannerVisible, setIsTrackingBannerVisible] = useState(true);
 
   const toggleFaq = (index: number) => {
     setExpandedFaq(expandedFaq === index ? null : index);
@@ -14,8 +15,38 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-white text-black">
+      {/* Tracking Banner */}
+      {isTrackingBannerVisible && (
+        <div className="fixed w-full bg-black text-white z-[60] top-0">
+          <div className="max-w-6xl mx-auto px-4 py-2 flex items-center justify-between">
+            <p className="text-sm font-medium">
+              Track your recovery vehicle in real-time
+            </p>
+            <div className="flex items-center gap-4">
+              <Link
+                href="/track"
+                className="text-sm font-semibold hover:text-gray-300 transition-colors flex items-center gap-1"
+              >
+                Track Now
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+              <button
+                onClick={() => setIsTrackingBannerVisible(false)}
+                className="text-white hover:text-gray-300 transition-colors"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Navigation */}
-      <nav className="fixed w-full bg-white z-50 border-b border-gray-100">
+      <nav className={`fixed w-full bg-white z-50 border-b border-gray-100 ${isTrackingBannerVisible ? 'top-8' : 'top-0'}`}>
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
           <a href="#" className="relative w-12 h-12">
             <Image
@@ -32,7 +63,7 @@ export default function Home() {
             <a href="#contact" className="font-display hover:text-gray-600 transition-colors">Contact</a>
           </div>
           <div className="flex items-center gap-4">
-            <a href="tel:+1234567890" className="bg-black text-white px-4 py-2 text-sm font-display font-semibold hover:bg-gray-900 transition-colors">
+            <a href="tel:07512640063" className="bg-black text-white px-4 py-2 text-sm font-display font-semibold hover:bg-gray-900 transition-colors">
               24/7 Emergency
             </a>
             <button
@@ -61,7 +92,7 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="min-h-[90vh] md:min-h-screen flex flex-col justify-center items-center px-4 border-b border-gray-100 pt-24 md:pt-16 bg-gradient-to-b from-white to-gray-50">
+      <section className={`min-h-[90vh] md:min-h-screen flex flex-col justify-center items-center px-4 border-b border-gray-100 ${isTrackingBannerVisible ? 'pt-32' : 'pt-24'} md:pt-16 bg-gradient-to-b from-white to-gray-50`}>
         <div className="w-full max-w-6xl mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-8 lg:gap-16">
           <div className="flex-1 text-center lg:text-left opacity-0 animate-fade-in" style={{ animationDelay: '0.2s' }}>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight mb-4 md:mb-6">
@@ -89,6 +120,27 @@ export default function Home() {
               priority
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 45vw, 600px"
             />
+          </div>
+        </div>
+      </section>
+
+      {/* Tracking Banner */}
+      <section className="py-12 bg-black text-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+              <h2 className="text-2xl md:text-3xl font-bold font-display mb-2">Track Your Recovery</h2>
+              <p className="text-gray-300">Follow your recovery vehicle in real-time</p>
+            </div>
+            <Link
+              href="/track"
+              className="bg-white text-black px-8 py-4 text-lg font-display font-semibold hover:bg-gray-100 transition-colors rounded-md flex items-center gap-2"
+            >
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+              Track Now
+            </Link>
           </div>
         </div>
       </section>
@@ -292,9 +344,8 @@ export default function Home() {
                   </svg>
                 </button>
                 <div
-                  className={`overflow-hidden transition-all duration-200 ${
-                    expandedFaq === index ? 'max-h-48' : 'max-h-0'
-                  }`}
+                  className={`overflow-hidden transition-all duration-200 ${expandedFaq === index ? 'max-h-48' : 'max-h-0'
+                    }`}
                 >
                   <p className="p-4 text-gray-600 bg-white">{faq.answer}</p>
                 </div>
@@ -313,7 +364,7 @@ export default function Home() {
             we&apos;re your trusted partner for dependable service.
           </p>
           <div className="flex flex-col md:flex-row gap-6 justify-center max-w-xl mx-auto">
-            <a href="tel:+1234567890" className="flex-1 bg-black text-white px-8 py-4 text-lg font-display font-semibold hover:bg-gray-900 transition-colors rounded-md flex items-center justify-center gap-2">
+            <a href="tel:07512640063" className="flex-1 bg-black text-white px-8 py-4 text-lg font-display font-semibold hover:bg-gray-900 transition-colors rounded-md flex items-center justify-center gap-2">
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
