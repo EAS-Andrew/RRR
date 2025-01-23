@@ -18,12 +18,12 @@ export default function Home() {
     <main className="min-h-screen bg-white text-black">
       {/* Tracking Banner */}
       {isTrackingBannerVisible && (
-        <div className="fixed w-full bg-black text-white z-[60] top-0">
-          <div className="max-w-6xl mx-auto px-4 py-2 flex items-center justify-between">
+        <div className="fixed w-full bg-[rgb(26,65,190)] text-white z-[60] top-0">
+          <div className="max-w-6xl mx-auto px-4 py-5 sm:py-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-4">
             <p className="text-sm font-medium">
               Track your recovery vehicle in real-time
             </p>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center justify-between sm:justify-end gap-4">
               <Link
                 href="/track"
                 className="text-sm font-semibold hover:text-gray-300 transition-colors flex items-center gap-1"
@@ -47,7 +47,7 @@ export default function Home() {
       )}
 
       {/* Navigation */}
-      <nav className={`fixed w-full bg-white z-50 border-b border-gray-100 ${isTrackingBannerVisible ? 'top-8' : 'top-0'}`}>
+      <nav className={`fixed w-full bg-white z-50 border-b border-gray-100 ${isTrackingBannerVisible ? 'top-[95px] sm:top-8' : 'top-0'}`}>
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
           <a href="#" className="relative w-12 h-12">
             <Image
