@@ -37,7 +37,7 @@ export default function Footer() {
                         <ul className="space-y-2 text-gray-600">
                             <li>24/7 Emergency: +447512640063</li>
                             <li>Email: info@rrrecovery.co.uk</li>
-                            <li>Location: VALE PARK, USK, Pontypool NP4 0JL</li>
+                            <li>Location: Pontypool</li>
                         </ul>
                     </div>
                 </div>
